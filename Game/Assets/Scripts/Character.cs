@@ -12,17 +12,23 @@ public enum RoadLine
 public class Character : MonoBehaviour
 {
     [SerializeField] RoadLine roadLine;
+    [SerializeField] Rigidbody rigidbody;
 
-    void Start()
+    [SerializeField] float positionX = 4;
+
+    private void Awake()
     {
-        
+        rigidbody = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        KeyBoard();
+        KeyBoard();   
+    }
 
-        
+    private void FixedUpdate()
+    {
+        Move();
     }
 
     void KeyBoard()
@@ -32,7 +38,6 @@ public class Character : MonoBehaviour
             if(roadLine != RoadLine.LEFT)
             {
                 roadLine--;
-                gameObject.transform.Translate(new Vector3(-2, 0, 0));
             }
         }
 
@@ -41,8 +46,12 @@ public class Character : MonoBehaviour
             if(roadLine != RoadLine.RIGHT)
             {
                 roadLine++;
-                gameObject.transform.Translate(new Vector3(+2, 0, 0));
             }
         }
+    }
+
+    void Move()
+    {
+        rigidbody.position = new Vector3(positionX * (int)roadLine, 0, 0);
     }
 }
