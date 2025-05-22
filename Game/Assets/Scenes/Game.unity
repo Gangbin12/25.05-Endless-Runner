@@ -732,10 +732,7 @@ MonoBehaviour:
   random: 0
   createCount: 5
   obstacles: []
-  prefab:
-  - {fileID: 200458453521357631, guid: dd5b143370e982d4cba70b84f7858ac1, type: 3}
-  - {fileID: 1034669549944842589, guid: a9067223db14f594b899ef0139326121, type: 3}
-  - {fileID: 7805187676059923426, guid: 8eb659ca763c84f4a8e4ebcd1b97052f, type: 3}
+  obstacleNames: []
   transforms:
   - {fileID: 688157872}
   - {fileID: 219048559}
@@ -2809,7 +2806,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!136 &4294760852451250665
 CapsuleCollider:
@@ -2847,7 +2844,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roadLine: 0
-  rigidbody: {fileID: 0}
+  rigidbody: {fileID: 4294760852451250664}
   positionX: 4
 --- !u!4 &4337715054180715678
 Transform:
