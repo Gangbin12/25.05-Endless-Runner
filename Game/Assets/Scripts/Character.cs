@@ -52,6 +52,12 @@ public class Character : MonoBehaviour
 
     void Move()
     {
-        rigidbody.position = new Vector3(positionX * (int)roadLine, 0, 0);
+
+        rigidbody.position = Vector3.Lerp
+            (
+            rigidbody.position,
+            new Vector3(positionX * (int)roadLine, 0, 0),
+            SpeedManager.Instance.Speed * Time.deltaTime
+            );
     }
 }
