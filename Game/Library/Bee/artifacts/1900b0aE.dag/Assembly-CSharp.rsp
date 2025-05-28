@@ -366,6 +366,7 @@
 "Assets/Scripts/ObstacleManager.cs"
 "Assets/Scripts/Road.cs"
 "Assets/Scripts/RoadManager.cs"
+"Assets/Scripts/Singleton.cs"
 "Assets/Scripts/SpeedManager.cs"
 "Assets/Scripts/TimeManager.cs"
 "Assets/timeManager.cs"
