@@ -12,31 +12,29 @@ public class SpeedManager : Singleton<SpeedManager>
 
     public float Speed { get { return speed; } }
 
-    public static SpeedManager Instance { get { return instance; } }
-
-    protected void Awake()
+    private void OnEnable()
     {
-        base.Awake();
-
-        if(instance == null)
-        {
-            instance = this; 
-        }
+        State.Subscribe(Condition.START, Execute);
     }
 
-    private void Start()
+    private void Execute()
     {
         StartCoroutine(Increase());
     }
 
     IEnumerator Increase()
     {
-        while(speed < limitSpeed)
+        while (speed < limitSpeed)
         {
             yield return CoroutineCache.WaitForSecond(5.0f);
 
             speed = speed + 2.5f;
         }
+    }
+
+    private void OnDisable()
+    {
+        State.Unsubscribe(Condition.START, Execute);
     }
 
 }

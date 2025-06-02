@@ -7,14 +7,28 @@ public class RoadManager : MonoBehaviour
     [SerializeField] float offset = 40;
     [SerializeField] List<GameObject> roads;
 
-    void Update()
+    private void OnEnable()
     {
-        for (int i = 0; i < roads.Count; i++)
-        {
-            roads[i].transform.Translate(SpeedManager.Instance.Speed * Vector3.back * Time.deltaTime);
-        }
+        State.Subscribe(Condition.START, Execute);
     }
 
+    void Execute()
+    {
+        StartCoroutine(Coroutine());
+    }
+
+    IEnumerator Coroutine()
+    {
+        while (true)
+        {
+            for (int i = 0; i < roads.Count; i++)
+            {
+                roads[i].transform.Translate(Vector3.back * SpeedManager.Instance.Speed * Time.deltaTime);
+            }
+
+            yield return null;
+        }
+    }
     public void InitializePosition()
     {
         GameObject newRoad = roads[0];
@@ -26,5 +40,10 @@ public class RoadManager : MonoBehaviour
         newRoad.transform.position = new Vector3(0, 0, newZ);
 
         roads.Add(newRoad);
+    }
+
+    private void OnDisable()
+    {
+        State.Unsubscribe(Condition.START, Execute);
     }
 }

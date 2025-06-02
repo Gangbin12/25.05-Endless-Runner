@@ -14,13 +14,16 @@ public class ObstacleManager : MonoBehaviour
 
     [SerializeField] Transform[] transforms;
 
-    void Start()
+    void Awake()
     {
         obstacles.Capacity = 10;
 
         Create();
+    }
 
-        StartCoroutine(ActiveObstacle());
+    private void OnEnable()
+    {
+        State.Subscribe(Condition.START, Execute);
     }
 
     public void Create()
@@ -47,6 +50,11 @@ public class ObstacleManager : MonoBehaviour
             }
         }
         return true;
+    }
+
+    void Execute()
+    {
+        StartCoroutine(ActiveObstacle());
     }
 
     public IEnumerator ActiveObstacle()
@@ -81,6 +89,11 @@ public class ObstacleManager : MonoBehaviour
 
             yield return new WaitForSeconds(5);
         }
+    }
+
+    private void OnDisable()
+    {
+        State.Unsubscribe(Condition.START, Execute);
     }
 
 }

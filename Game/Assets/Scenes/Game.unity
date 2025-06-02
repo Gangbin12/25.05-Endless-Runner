@@ -324,7 +324,7 @@ Transform:
   m_GameObject: {fileID: 379433211}
   serializedVersion: 2
   m_LocalRotation: {x: 0.08715578, y: 0, z: 0, w: 0.9961947}
-  m_LocalPosition: {x: 0, y: 2.5, z: -3.5}
+  m_LocalPosition: {x: 0, y: 3.5, z: 2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -838,6 +838,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 629363d81b4c0ea428b36bf1d13a5c21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startButton: {fileID: 1564070149}
 --- !u!4 &900367092
 Transform:
   m_ObjectHideFlags: 0
@@ -940,7 +941,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0.08715578, y: 0, z: 0, w: 0.9961947}
-  m_LocalPosition: {x: 0, y: 2.5, z: -3.5}
+  m_LocalPosition: {x: 0, y: 3.5, z: 2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2084,7 +2085,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 2.5, z: -3.5}
+  m_FollowOffset: {x: 0, y: 3.5, z: 2.5}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -3403,6 +3404,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roadLine: 0
   rigidbody: {fileID: 4294760852451250664}
+  animator: {fileID: 0}
   positionX: 4
 --- !u!4 &4337715054180715678
 Transform:
