@@ -26,7 +26,7 @@ public class Character : MonoBehaviour
     private void OnEnable()
     {
         State.Subscribe(Condition.FINISH, Die);
-
+        State.Subscribe(Condition.FINISH, Release);
 
         State.Subscribe(Condition.START, InputSystem);
         State.Subscribe(Condition.START, StateTransition);
@@ -35,6 +35,11 @@ public class Character : MonoBehaviour
     public void InputSystem()
     {
         StartCoroutine(Coroutine());
+    }
+
+    void Release()
+    {
+        StopAllCoroutines();
     }
 
     private void FixedUpdate()
@@ -89,6 +94,11 @@ public class Character : MonoBehaviour
     public void StateTransition()
     {
         animator.SetTrigger("Start");
+    }
+
+    void Synchronize()
+    {
+        animator.speed = SpeedManager.Instance.Speed / SpeedManager.Instance.InitializeSpeed;
     }
 
     private void OnTriggerEnter(Collider other)

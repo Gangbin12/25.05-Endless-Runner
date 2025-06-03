@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
+    private void OnEnable()
+    {
+        State.Subscribe(Condition.FINISH, Release);
+    }
+
+
 
     public void Activate()
     {
@@ -13,5 +19,15 @@ public class Obstacle : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.up * SpeedManager.Instance.Speed * Time.deltaTime);
+    }
+
+    void Release()
+    {
+        Destroy(this);
+    }
+
+    private void OnDisable()
+    {
+        State.Unsubscribe(Condition.FINISH, Release);
     }
 }

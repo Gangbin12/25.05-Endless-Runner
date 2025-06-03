@@ -57,6 +57,11 @@ public class ObstacleManager : MonoBehaviour
         StartCoroutine(ActiveObstacle());
     }
 
+    void Release()
+    {
+        StopAllCoroutines();
+    }
+
     public IEnumerator ActiveObstacle()
     {
         while (true)
@@ -94,6 +99,7 @@ public class ObstacleManager : MonoBehaviour
     private void OnDisable()
     {
         State.Unsubscribe(Condition.START, Execute);
+        State.Unsubscribe(Condition.FINISH, Release);
     }
 
 }
